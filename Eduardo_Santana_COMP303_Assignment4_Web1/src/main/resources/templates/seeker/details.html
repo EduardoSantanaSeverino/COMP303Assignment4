@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">   
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+   
+    <!-- Mobile Metas -->
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+ 
+	<!-- Site Metas -->
+	<title>Blood Bank Information System - JAVA EE - Eduardo</title>  
+	<meta name="description" content="List - JAVA EE - Eduardo">
+	<meta name="author" content="Eduardo Santana">
+
+    <!-- Site Icons -->
+    <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
+
+    <!-- Bootstrap CSS -->
+    <link href="/css/bootstrap.min.css" rel="stylesheet">
+	<!-- Site CSS -->
+    <link rel="stylesheet" href="/css/style.css"> 
+	<!-- Fontawesome CSS -->
+    <link rel="stylesheet" href="/css/all.min.css">  	
+    <!-- Responsive CSS -->
+    <link rel="stylesheet" href="/css/responsive.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/custom_home.css">
+
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" integrity="sha256-+N4/V/SbAFiW1MPBCXnfnP9QSN3+Keu+NlB+0ev/YKQ=" crossorigin="anonymous" />
+
+	<!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+
+<body>
+<div id="particles-js" class="main-form-box">
+	<div class="md-form">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-10 offset-md-1">
+					<div class="panel panel-login">
+						<div class="logo-top">
+						
+													<a href="/">
+								<h3>Blood Bank Information System</h3>
+								<h4>Seeker Details</h4>
+							</a>
+							
+						</div>
+						<div class="panel-body">
+							<div class="row">
+								<div class="col-lg-12">
+									
+									<div class="main-content">
+								
+											<div class="card" style="display: block;">
+											
+                                                   <div class="card-body">
+                                                       <h5 class="card-title">Seeker Details</h5>
+                                                       <h6 class="card-subtitle mb-2 text-muted">Seeker properties, we have enumerated the properties.</h6>
+                                                       <div class="card-text">
+
+                                                           <div class="form-group">
+
+                                                               <label for="firstName">First Name</label>
+                                                               <input readonly th:value="${item.firstName}" type="text" name="firstName" class="form-control" id="firstName" >
+
+                                                           </div>
+
+                                                           <div class="form-group">
+
+                                                               <label for="lastName">Last Name</label>
+                                                               <input readonly th:value="${item.lastName}" type="text" name="lastName" class="form-control" id="lastName" >
+
+                                                           </div>
+                                                           
+                                                           <div class="form-group">
+
+                                                               <label for="bloodGroup">Age Or DOB</label>
+                                                               <input readonly th:value="${item.bloodGroup}" type="text" name="bloodGroup" class="form-control" id="bloodGroup" >
+
+                                                           </div>
+                                                           
+                                                           <div class="form-group">
+
+                                                               <label for="gender">Gender</label>
+                                                               <input readonly th:value="${item.gender}" type="text" name="gender" class="form-control" id="gender" >
+
+                                                           </div>
+                                                           
+                                                           <div class="form-group">
+
+                                                               <label for="city">City</label>
+                                                               <input readonly th:value="${item.city}" type="text" name="city" class="form-control" id="city" >
+
+                                                           </div>
+                                                           
+                                                           <div class="form-group">
+
+                                                               <label for="phone">Phone</label>
+                                                               <input readonly th:value="${item.phone}" type="text" name="phone" class="form-control" id="phone" >
+
+                                                           </div>
+                                                           
+                                                           <div class="clearfix"></div>
+
+                                                       </div>
+                                                   </div>
+                                            </div>
+											
+									</div>
+									
+								</div>
+							</div>
+						</div>
+					</div>
+					
+					<p class="footer-company-name">Eduardo COMP303 Assignment3 - Java EE - Details Page</p>
+					
+				</div>
+			</div>
+		</div>	
+	</div>
+	
+</div>
+
+<script src="/js/jquery.min.js"></script>
+<script src="/js/bootstrap.min.js"></script>
+<script src="/js/particles.min.js"></script>
+<script src="/js/index.min.js"></script>
+
+</body>
+</html>

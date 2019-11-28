@@ -3,14 +3,15 @@
  */
 package com.example.service.demo.seeker;
 
-import java.lang.annotation.Annotation;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.NotBlank;
+
+import com.sun.istack.NotNull;
 
 /**
  * Student Name: Eduardo Santana
@@ -21,27 +22,51 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name="seekers")
-public class Seeker implements Entity{
+public class Seeker {
 	
 	@Id
 	@Column(name="id")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
+	
+	@NotBlank(message = "FirstName is mandatory")
+	@NotNull()
 	@Column(name="firstName")
-	private String firstName ;
+	private String firstName;
+	
+	@NotBlank(message = "LastName is mandatory")
+	@NotNull()
 	@Column(name="lastName")
 	private String lastName ;
+	
+	@NotBlank(message = "AgeOrDOB is mandatory")
+	@NotNull()
 	@Column(name="ageOrDOB")
 	private String ageOrDOB ;
+	
+	@NotBlank(message = "Gender is mandatory")
+	@NotNull()
 	@Column(name="gender")
 	private String gender ;
+	
+	@NotBlank(message = "BloodGroup is mandatory")
+	@NotNull()
 	@Column(name="bloodGroup")
 	private String bloodGroup ;
+	
+	@NotBlank(message = "City is mandatory")
+	@NotNull()
 	@Column(name="city")
 	private String city ;
+	
+	@NotBlank(message = "Phone is mandatory")
+	@NotNull()
 	@Column(name="phone")
 	private String phone ;
 	
+	//examples for more annotations
+	//@Size(min=20, max=60)private intage;
+	//@Pattern(regex="[0-9]+")
 	/**
 	 * Default constructor
 	 */
@@ -173,18 +198,6 @@ public class Seeker implements Entity{
 	 */
 	public void setId(int id) {
 		this.id = id;
-	}
-
-	@Override
-	public Class<? extends Annotation> annotationType() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public String name() {
-		// TODO Auto-generated method stub
-		return null;
 	}
 
 }
