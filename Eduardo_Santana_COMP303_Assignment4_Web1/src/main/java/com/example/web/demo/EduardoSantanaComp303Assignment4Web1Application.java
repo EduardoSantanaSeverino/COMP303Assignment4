@@ -14,10 +14,10 @@ public class EduardoSantanaComp303Assignment4Web1Application  implements WebMvcC
 		SpringApplication.run(EduardoSantanaComp303Assignment4Web1Application.class, args);
 	}
 	
-
 	@Override
 	public void addViewControllers(ViewControllerRegistry registry) {
 		registry.addViewController("/").setViewName("index");
+		registry.addViewController("/actuator/info").setViewName("index");
 	}
 
 }
