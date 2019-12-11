@@ -41,7 +41,6 @@ public class Seeker {
 	@Column(name="lastName")
 	private String lastName ;
 	
-	@NotBlank(message = "AgeOrDOB is mandatory")
 	@NotNull()
 	@Range(min = 18, max = 99, message = "Can only be from 18 to 99")
 	@Column(name="age")
@@ -129,15 +128,15 @@ public class Seeker {
 		this.lastName = lastName;
 	}
 	/**
-	 * @return the ageOrDOB
+	 * @return the age
 	 */
-	public int getAgeOrDOB() {
+	public int getAge() {
 		return age;
 	}
 	/**
-	 * @param ageOrDOB the ageOrDOB to set
+	 * @param age the age to set
 	 */
-	public void setAgeOrDOB(int age) {
+	public void setAge(int age) {
 		this.age = age;
 	}
 	/**
