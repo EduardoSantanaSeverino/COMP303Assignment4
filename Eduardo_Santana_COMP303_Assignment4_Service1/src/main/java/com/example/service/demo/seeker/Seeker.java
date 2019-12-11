@@ -10,6 +10,9 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Pattern;
+
+import org.hibernate.validator.constraints.Range;
 
 import com.sun.istack.NotNull;
 
@@ -19,6 +22,7 @@ import com.sun.istack.NotNull;
  * Submission Date: 2019-11-15 (Estimated)
  * File Created: Nov. 6, 2019
  */
+
 @Entity
 @Table(name="seekers")
 public class Seeker {
@@ -28,27 +32,27 @@ public class Seeker {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	
-	@NotBlank(message = "FirstName is mandatory")
+	@NotBlank(message = "First Name is mandatory")
 	@NotNull()
 	@Column(name="firstName")
 	private String firstName;
 	
-	@NotBlank(message = "LastName is mandatory")
+	@NotBlank(message = "Last Name is mandatory")
 	@NotNull()
 	@Column(name="lastName")
 	private String lastName ;
 	
-	@NotBlank(message = "AgeOrDOB is mandatory")
 	@NotNull()
-	@Column(name="ageOrDOB")
-	private String ageOrDOB ;
+	@Range(min = 18, max = 99, message = "Can only be from 18 to 99")
+	@Column(name="age")
+	private int age ;
 	
 	@NotBlank(message = "Gender is mandatory")
 	@NotNull()
 	@Column(name="gender")
 	private String gender ;
 	
-	@NotBlank(message = "BloodGroup is mandatory")
+	@NotBlank(message = "Blood Group is mandatory")
 	@NotNull()
 	@Column(name="bloodGroup")
 	private String bloodGroup ;
@@ -61,11 +65,9 @@ public class Seeker {
 	@NotBlank(message = "Phone is mandatory")
 	@NotNull()
 	@Column(name="phone")
+	@Pattern(regexp="^\\(?([0-9]{3})\\)?[-.\\s]?([0-9]{3})[-.\\s]?([0-9]{4})$", message = "Should be in the format 999-999-9999")
 	private String phone ;
 	
-	//examples for more annotations
-	//@Size(min=20, max=60)private intage;
-	//@Pattern(regex="[0-9]+")
 	/**
 	 * Default constructor
 	 */
@@ -85,7 +87,7 @@ public class Seeker {
 	public Seeker(
 			String firstName, 
 			String lastName, 
-			String ageOrDOB, 
+			int age, 
 			String gender, 
 			String bloodGroup, 
 			String city,
@@ -94,7 +96,7 @@ public class Seeker {
 		super();
 		this.firstName = firstName;
 		this.lastName = lastName;
-		this.ageOrDOB = ageOrDOB;
+		this.age = age;
 		this.gender = gender;
 		this.bloodGroup = bloodGroup;
 		this.city = city;
@@ -127,16 +129,16 @@ public class Seeker {
 		this.lastName = lastName;
 	}
 	/**
-	 * @return the ageOrDOB
+	 * @return the age
 	 */
-	public String getAgeOrDOB() {
-		return ageOrDOB;
+	public int getAge() {
+		return age;
 	}
 	/**
-	 * @param ageOrDOB the ageOrDOB to set
+	 * @param age the age to set
 	 */
-	public void setAgeOrDOB(String ageOrDOB) {
-		this.ageOrDOB = ageOrDOB;
+	public void setAge(int age) {
+		this.age = age;
 	}
 	/**
 	 * @return the gender

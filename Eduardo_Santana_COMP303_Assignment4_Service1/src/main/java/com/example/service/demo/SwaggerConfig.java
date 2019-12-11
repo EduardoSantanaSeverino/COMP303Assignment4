@@ -10,6 +10,7 @@ import springfox.documentation.spring.web.plugins.Docket;
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
 import static springfox.documentation.builders.PathSelectors.regex;
 
+// to access to swagger please go to: http://localhost:8080/swagger-ui.html
 @Configuration
 @EnableSwagger2
 public class SwaggerConfig {
@@ -28,7 +29,7 @@ public class SwaggerConfig {
                 "Spring Boot REST API for Online Store",
                 "1.0",
                 "Terms of service",
-                new Contact("Eduardo Santana", "www.myunitygames.tk", "eduardoamparos@gmail.com"),
+                new Contact("Eduardo Santana", "", ""),
                "Apache License Version 2.0",
                 "https://www.apache.org/licenses/LICENSE-2.0");
         return apiInfo;

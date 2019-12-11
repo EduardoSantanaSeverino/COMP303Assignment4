@@ -9,7 +9,6 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Pattern;
-import javax.validation.constraints.Size;
 
 import org.hibernate.validator.constraints.Range;
 
@@ -31,12 +30,12 @@ public class Seeker {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	
-	@NotBlank(message = "FirstName is mandatory")
+	@NotBlank(message = "First Name is mandatory")
 	@NotNull()
 	@Column(name="firstName")
 	private String firstName;
 	
-	@NotBlank(message = "LastName is mandatory")
+	@NotBlank(message = "Last Name is mandatory")
 	@NotNull()
 	@Column(name="lastName")
 	private String lastName ;
@@ -51,7 +50,7 @@ public class Seeker {
 	@Column(name="gender")
 	private String gender ;
 	
-	@NotBlank(message = "BloodGroup is mandatory")
+	@NotBlank(message = "Blood Group is mandatory")
 	@NotNull()
 	@Column(name="bloodGroup")
 	private String bloodGroup ;
@@ -61,7 +60,7 @@ public class Seeker {
 	@Column(name="city")
 	private String city ;
 	
-	@NotBlank(message = "phone is mandatory")
+	@NotBlank(message = "Phone is mandatory")
 	@NotNull()
 	@Column(name="phone")
 	@Pattern(regexp="^\\(?([0-9]{3})\\)?[-.\\s]?([0-9]{3})[-.\\s]?([0-9]{4})$", message = "Should be in the format 999-999-9999")
