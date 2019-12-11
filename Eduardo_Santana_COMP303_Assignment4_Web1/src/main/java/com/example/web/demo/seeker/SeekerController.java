@@ -1,6 +1,5 @@
 package com.example.web.demo.seeker;
 
-
 import java.util.HashMap;
 import java.util.List;
 
@@ -40,11 +39,6 @@ public class SeekerController
         binder.registerCustomEditor(String.class, new StringTrimmerEditor(true));
     }
 	
-	@GetMapping("/indexbase")
-	public String indexbase(Model model, HttpServletRequest request) {
-		return "index_base";
-	}
-	
 	@GetMapping("/seekers")
 	public String getAll(Model model, HttpServletRequest request) 
 	{
@@ -60,8 +54,8 @@ public class SeekerController
 	@GetMapping("/seekers/update/{id}")
 	public String updateItem(@PathVariable int id, Model model)
 	{
-		Seeker item = this.seekerService.getItem(id);
-		model.addAttribute("item",item);
+		Seeker seeker = this.seekerService.getItem(id);
+		model.addAttribute("seeker", seeker);
 		return "seeker/update";
 	}
 	
@@ -94,7 +88,7 @@ public class SeekerController
 	@GetMapping("/seekers/create")
 	public String createItem(Model model)
 	{
-		model.addAttribute("item", new Seeker());
+		model.addAttribute("seeker", new Seeker());
 		return "seeker/create";
 	}
 
@@ -127,8 +121,8 @@ public class SeekerController
 	@GetMapping("/seekers/details/{id}")
 	public String detailsItem(@PathVariable int id, Model model)
 	{
-		Seeker item = this.seekerService.getItem(id);
-		model.addAttribute("item",item);
+		Seeker seeker = this.seekerService.getItem(id);
+		model.addAttribute("seeker", seeker);
 		return "seeker/details";
 	}
 		

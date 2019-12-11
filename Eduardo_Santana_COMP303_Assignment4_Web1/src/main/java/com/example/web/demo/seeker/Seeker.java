@@ -8,7 +8,10 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
+
+import org.hibernate.validator.constraints.Range;
 
 import com.sun.istack.NotNull;
 
@@ -40,8 +43,9 @@ public class Seeker {
 	
 	@NotBlank(message = "AgeOrDOB is mandatory")
 	@NotNull()
-	@Column(name="ageOrDOB")
-	private String ageOrDOB ;
+	@Range(min = 18, max = 99, message = "Can only be from 18 to 99")
+	@Column(name="age")
+	private int age ;
 	
 	@NotBlank(message = "Gender is mandatory")
 	@NotNull()
@@ -58,15 +62,12 @@ public class Seeker {
 	@Column(name="city")
 	private String city ;
 	
-	@NotBlank(message = "Phone is mandatory")
-	@Size(min=10, max=20, message ="Error it must be from 10 to 20")
+	@NotBlank(message = "phone is mandatory")
 	@NotNull()
 	@Column(name="phone")
+	@Pattern(regexp="^\\(?([0-9]{3})\\)?[-.\\s]?([0-9]{3})[-.\\s]?([0-9]{4})$", message = "Should be in the format 999-999-9999")
 	private String phone ;
 	
-	//examples for more annotations
-	//@Size(min=20, max=60)private intage;
-	//@Pattern(regex="[0-9]+")
 	/**
 	 * Default constructor
 	 */
@@ -86,7 +87,7 @@ public class Seeker {
 	public Seeker(
 			String firstName, 
 			String lastName, 
-			String ageOrDOB, 
+			int age, 
 			String gender, 
 			String bloodGroup, 
 			String city,
@@ -95,7 +96,7 @@ public class Seeker {
 		super();
 		this.firstName = firstName;
 		this.lastName = lastName;
-		this.ageOrDOB = ageOrDOB;
+		this.age = age;
 		this.gender = gender;
 		this.bloodGroup = bloodGroup;
 		this.city = city;
@@ -130,14 +131,14 @@ public class Seeker {
 	/**
 	 * @return the ageOrDOB
 	 */
-	public String getAgeOrDOB() {
-		return ageOrDOB;
+	public int getAgeOrDOB() {
+		return age;
 	}
 	/**
 	 * @param ageOrDOB the ageOrDOB to set
 	 */
-	public void setAgeOrDOB(String ageOrDOB) {
-		this.ageOrDOB = ageOrDOB;
+	public void setAgeOrDOB(int age) {
+		this.age = age;
 	}
 	/**
 	 * @return the gender

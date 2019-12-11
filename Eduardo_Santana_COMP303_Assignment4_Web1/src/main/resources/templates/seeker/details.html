@@ -49,7 +49,7 @@
                                                 
                     <h2 class="title">Seeker Creation</h2>
                     <h6 class="card-subtitle mb-2 text-muted">Please type seeker information.</h6>
-                    <form action="#" method="post" role="form" th:object="${item}">
+                    <form action="#" method="post" role="form" th:object="${seeker}">
                     
                     <div class="row row-space">
                     
@@ -58,7 +58,6 @@
 		                         <input readonly="readonly" type="text" class="input--style-2" th:field="*{firstName}" placeholder="First Name" >
 		                    </div>
 		                    <div th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}" class="custom-inline-validatation-error" > 
-		                    	Error on First Name
 		                    </div>
 		                 
                           </div>
@@ -68,7 +67,6 @@
 		                            <input readonly="readonly" type="text" th:field="*{lastName}" class="input--style-2" placeholder="Last Name" >
 		                    </div>
 		                    <div th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}" class="custom-inline-validatation-error" > 
-		                    	Error on Last Name
 		                    </div>
                           </div>
                           
@@ -81,26 +79,24 @@
 		                          
 		                          	<select disabled="disabled" th:field="*{bloodGroup}" class="input--style-2" required style="width: 207px;">
 										<option value="">Select Blood Group</option>
-											<option value="A" th:selected="${item.bloodGroup == 'A'}">A</option>
-											<option value="O+" th:selected="${item.bloodGroup == 'O+'}">O+</option>
-											<option value="O-" th:selected="${item.bloodGroup == 'O-'}">O-</option>
-											<option value="ORh+" th:selected="${item.bloodGroup == 'ORh+'}">ORh+</option>
-											<option value="B" th:selected="${item.bloodGroup == 'B'}">B</option>
-											<option value="B+" th:selected="${item.bloodGroup == 'B+'}">B+</option>
+											<option value="A" th:selected="${seeker.bloodGroup == 'A'}">A</option>
+											<option value="O+" th:selected="${seeker.bloodGroup == 'O+'}">O+</option>
+											<option value="O-" th:selected="${seeker.bloodGroup == 'O-'}">O-</option>
+											<option value="ORh+" th:selected="${seeker.bloodGroup == 'ORh+'}">ORh+</option>
+											<option value="B" th:selected="${seeker.bloodGroup == 'B'}">B</option>
+											<option value="B+" th:selected="${seeker.bloodGroup == 'B+'}">B+</option>
 									</select>
 								
 		                    </div>
 		                    <div th:if="${#fields.hasErrors('bloodGroup')}" th:errors="*{bloodGroup}" class="custom-inline-validatation-error" > 
-		                    	Error on Blood Group
 		                    </div>
 		                 </div>
 		                        
 		                 <div class="col-2">
 		                   	<div class="input-group">
-		                        <input readonly="readonly" th:field="*{ageOrDOB}" type="text" class="input--style-2" placeholder="Age">
+		                        <input readonly="readonly" th:field="*{age}" type="text" class="input--style-2" placeholder="Age">
 		                    </div>
-		                    <div th:if="${#fields.hasErrors('ageOrDOB')}" th:errors="*{ageOrDOB}" class="custom-inline-validatation-error" > 
-		                    	Error on age Or DOB
+		                    <div th:if="${#fields.hasErrors('age')}" th:errors="*{age}" class="custom-inline-validatation-error" > 
 		                    </div>
                         </div>
                         
@@ -114,13 +110,12 @@
 						
 		                          	<select disabled="disabled" th:field="*{gender}" class="input--style-2" required style="width: 207px;">
 										<option value="">Select Gender</option>
-										<option value="Male" th:selected="${item.gender == 'Male'}">Male</option>
-										<option value="Female" th:selected="${item.bloodGroup == 'Female'}">Female</option>
+										<option value="Male" th:selected="${seeker.gender == 'Male'}">Male</option>
+										<option value="Female" th:selected="${seeker.bloodGroup == 'Female'}">Female</option>
 									</select>
 									
 							</div>
 							<div th:if="${#fields.hasErrors('gender')}" th:errors="*{gender}" class="custom-inline-validatation-error" > 
-		                    	Error on Gender
 		                    </div>
 				
 		                 </div>
@@ -130,7 +125,6 @@
 		                        <input readonly="readonly" th:field="*{phone}" type="text" class="input--style-2" placeholder="Phone">
 		                    </div>
 		                    <div th:if="${#fields.hasErrors('phone')}" th:errors="*{phone}" class="custom-inline-validatation-error" > 
-		                    	Error on Phone
 		                    </div>
                         </div>
                         
@@ -143,7 +137,6 @@
 				            	<input readonly="readonly" th:field="*{city}" type="text" class="input--style-2" placeholder="City">
 							</div>
 							<div th:if="${#fields.hasErrors('city')}" th:errors="*{city}" class="custom-inline-validatation-error" > 
-		                    	Error on City
 		                    </div>
 		                 </div>
 		                        
