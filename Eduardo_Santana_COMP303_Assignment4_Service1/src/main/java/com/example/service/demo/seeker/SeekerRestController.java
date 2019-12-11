@@ -17,6 +17,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
+
 /**
  * Student Name: Eduardo Santana
  * Student Number: 301048660
@@ -24,43 +27,43 @@ import org.springframework.web.bind.annotation.RestController;
  * File Created: Nov. 6, 2019
  */
 
-@RestController
+@RestController  @Api(value="seekerrestcontroller", description="Operations pertaining to seekers") 
 public class SeekerRestController {
 	
 	@Autowired
-	private SeekerRepository seekerService;
+	private SeekerService seekerService;
 	
 	@RequestMapping(value = "/api/seekers", method = RequestMethod.GET)
 	public List<Seeker> getAll()
 	{
-		return this.seekerService.findAll();
+		return this.seekerService.getAll();
 	}
 	
 	@RequestMapping(value = "/api/seekers/{id}", method = RequestMethod.GET)
 	public Seeker getItem(@PathVariable int id)
 	{
-		return this.seekerService.getOne(id);
+		return this.seekerService.getItem(id);
 	}
 	
 	@RequestMapping(value = "/api/seekers", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
 	@ResponseStatus(value = HttpStatus.OK)
-	public void createItem(@Valid @RequestBody Seeker item)
+	public void createItem(@RequestBody Seeker item)
 	{
-		this.seekerService.save(item);
+		this.seekerService.createItem(item);
 	}
 	
 	@RequestMapping(value = "/api/seekers/{id}", method = RequestMethod.PUT, consumes = MediaType.APPLICATION_JSON_VALUE)
 	@ResponseStatus(value = HttpStatus.OK)
-	public void updateItem(@PathVariable int id, @Valid @RequestBody Seeker item)
+	public void updateItem(@PathVariable int id, @RequestBody Seeker item)
 	{
-		this.seekerService.save(item);
+		this.seekerService.updateItem(id, item);
 	}
 	
 	@RequestMapping(value = "/api/seekers/{id}", method = RequestMethod.DELETE)
 	@ResponseStatus(value = HttpStatus.OK)
 	public void deleteItem(@PathVariable int id)
 	{
-		this.seekerService.deleteById(id);
+		this.seekerService.deleteItem(id);
 	}
 	
 }

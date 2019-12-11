@@ -8,6 +8,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
 
 import com.sun.istack.NotNull;
 
@@ -58,6 +59,7 @@ public class Seeker {
 	private String city ;
 	
 	@NotBlank(message = "Phone is mandatory")
+	@Size(min=10, max=20, message ="Error it must be from 10 to 20")
 	@NotNull()
 	@Column(name="phone")
 	private String phone ;

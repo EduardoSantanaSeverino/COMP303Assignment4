@@ -5,11 +5,16 @@ import java.util.HashMap;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.propertyeditors.StringTrimmerEditor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -27,15 +32,25 @@ import org.springframework.web.servlet.ModelAndView;
 public class SeekerController 
 {
 
-    @Autowired
-	private SeekerRepository seekerService;
+	@Autowired
+	private SeekerService seekerService;
+	
+	@InitBinder
+    public void initBinder(WebDataBinder binder) {
+        binder.registerCustomEditor(String.class, new StringTrimmerEditor(true));
+    }
+	
+	@GetMapping("/indexbase")
+	public String indexbase(Model model, HttpServletRequest request) {
+		return "index_base";
+	}
 	
 	@GetMapping("/seekers")
 	public String getAll(Model model, HttpServletRequest request) 
 	{
 		String error_message = getErrorMessage(request);
 		String info_message = getInfoMessage(request);
-		List<Seeker> items = this.seekerService.findAll();
+		List<Seeker> items = this.seekerService.getAll();
 		model.addAttribute("items", items);
 		model.addAttribute("error_message", (error_message == "null" ? "" : error_message));
 		model.addAttribute("info_message", (info_message == "null" ? "" : info_message));
@@ -45,59 +60,74 @@ public class SeekerController
 	@GetMapping("/seekers/update/{id}")
 	public String updateItem(@PathVariable int id, Model model)
 	{
-		Seeker item = this.seekerService.getOne(id);
+		Seeker item = this.seekerService.getItem(id);
 		model.addAttribute("item",item);
 		return "seeker/update";
 	}
 	
 	@RequestMapping(value = "/seekers/update", method = RequestMethod.POST)
-    public ModelAndView updateItem(@ModelAttribute Seeker item, HttpServletRequest request)
+    public String updateItem(@ModelAttribute @Valid Seeker item, BindingResult bindingResult, Model model, HttpServletRequest request)
 	{
-	
-		this.seekerService.save(item);
-		boolean isValid = item != null;
-		
-		if(isValid)
-		{
-			request.getSession().setAttribute("info_message", "Information Saved Correctly!");
-		}
-		else
-		{
-			request.getSession().setAttribute("error_message", "There were some errors trying to save your information, please talk to administrators at +1 (471) 562 - 5656 !");
-		}
-		return new ModelAndView("redirect:/seekers", new HashMap<>());	
+		if (bindingResult.hasErrors()) {
+            System.out.println("BINDING RESULT ERROR");
+            return "seeker/update";
+        } 
+		else {
+        	this.seekerService.updateItem(item.getId(), item);
+    		boolean isValid = item != null;
+    		
+    		if(isValid)
+    		{
+    			request.getSession().setAttribute("info_message", "Information Saved Correctly!");
+    		}
+    		else
+    		{
+    			request.getSession().setAttribute("error_message", "There were some errors trying to save your information, please talk to administrators at +1 (471) 562 - 5656 !");
+    		}
+    		
+    		return "redirect:/seekers";	
 
+        }
+		
 	}
 	
 	@GetMapping("/seekers/create")
 	public String createItem(Model model)
 	{
+		model.addAttribute("item", new Seeker());
 		return "seeker/create";
 	}
 
 	@RequestMapping(value = "/seekers/create", method = RequestMethod.POST)
-    public ModelAndView createItem(@ModelAttribute Seeker item, HttpServletRequest request)
+    public String createItem(@ModelAttribute @Valid Seeker item, BindingResult bindingResult, Model model, HttpServletRequest request)
 	{
 	
-		this.seekerService.save(item);
-		boolean isValid = item != null;
-		
-		if(isValid)
-		{
-			request.getSession().setAttribute("info_message", "Information Saved Correctly!");
-		}
-		else
-		{
-			request.getSession().setAttribute("error_message", "There were some errors trying to save your information, please talk to administrators at +1 (471) 562 - 5656 !");
-		}
-		return new ModelAndView("redirect:/seekers", new HashMap<>());	
+		if (bindingResult.hasErrors()) {
+            System.out.println("BINDING RESULT ERROR");
+            return "seeker/create";
+        } 
+		else {
+			this.seekerService.createItem(item);
+			boolean isValid = item != null;
+			
+			if(isValid)
+			{
+				request.getSession().setAttribute("info_message", "Information Saved Correctly!");
+			}
+			else
+			{
+				request.getSession().setAttribute("error_message", "There were some errors trying to save your information, please talk to administrators at +1 (471) 562 - 5656 !");
+			}
+			return "redirect:/seekers";	
 
+		}
+		
 	}
 	
 	@GetMapping("/seekers/details/{id}")
 	public String detailsItem(@PathVariable int id, Model model)
 	{
-		Seeker item = this.seekerService.getOne(id);
+		Seeker item = this.seekerService.getItem(id);
 		model.addAttribute("item",item);
 		return "seeker/details";
 	}
@@ -106,7 +136,7 @@ public class SeekerController
 	public ModelAndView deleteItem(@PathVariable int id, HttpServletRequest request)
 	{
 
-		this.seekerService.deleteById(id);
+		this.seekerService.deleteItem(id);
 		
 		request.getSession().setAttribute("info_message", "Seeker Deleted Correctly!");
 		

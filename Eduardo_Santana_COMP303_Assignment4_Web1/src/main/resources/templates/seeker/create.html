@@ -1,139 +1,185 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" 
+	xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:th="http://www.thymeleaf.org">   
 <head>
+   
+    <!-- Required meta tags-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="keywords" content="Colorlib Templates">
+	<title>Blood Bank Information System - JAVA EE - Eduardo</title>  
+	<meta name="description" content="List - JAVA EE - Eduardo">
+	<meta name="author" content="Eduardo Santana">
+
+    <!-- Icons font CSS-->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link href="/vendor/mdi-font/css/material-design-iconic-font.min.css" rel="stylesheet" media="all">
+    <link href="/vendor/font-awesome-4.7/css/font-awesome.min.css" rel="stylesheet" media="all">
+    <!-- Font special for pages-->
+    <link href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i" rel="stylesheet">
+
+    <!-- Vendor CSS-->
+    <link href="/vendor/select2/select2.min.css" rel="stylesheet" media="all">
+    <link href="/vendor/datepicker/daterangepicker.css" rel="stylesheet" media="all">
+
+    <!-- Main CSS-->
+    <link href="/css/main.css" rel="stylesheet" media="all">
+    
 	<meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">   
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
    
     <!-- Mobile Metas -->
     <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
- 
-	<!-- Site Metas -->
-	<title>Blood Bank Information System - JAVA EE - Eduardo</title>  
-	<meta name="description" content="List - JAVA EE - Eduardo">
-	<meta name="author" content="Eduardo Santana">
-
-    <!-- Site Icons -->
-    <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
-    <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
-
-    <!-- Bootstrap CSS -->
-    <link href="/css/bootstrap.min.css" rel="stylesheet">
-	<!-- Site CSS -->
-    <link rel="stylesheet" href="/css/style.css"> 
-	<!-- Fontawesome CSS -->
-    <link rel="stylesheet" href="/css/all.min.css">  	
-    <!-- Responsive CSS -->
-    <link rel="stylesheet" href="/css/responsive.css">
-    <!-- Custom CSS -->
-    <link rel="stylesheet" href="/css/custom_home.css">
-
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" integrity="sha256-+N4/V/SbAFiW1MPBCXnfnP9QSN3+Keu+NlB+0ev/YKQ=" crossorigin="anonymous" />
-
-	<!--[if lt IE 9]>
-      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-    <![endif]-->
+    
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+	<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+	<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+	<link rel="manifest" href="/site.webmanifest">
 
 </head>
 
 <body>
-<div id="particles-js" class="main-form-box">
-	<div class="md-form">
-		<div class="container">
-			<div class="row">
-				<div class="col-md-10 offset-md-1">
-					<div class="panel panel-login">
-						<div class="logo-top">
-							<a href="/">
-								<h3>Blood Bank Information System</h3>
-								<h4>Seeker Create</h4>
-							</a>
-						</div>
-						<div class="panel-body">
-							<div class="row">
-								<div class="col-lg-12">
-									
-									<div class="main-content">
+    <div class="page-wrapper bg-red p-t-180 p-b-100 font-robo">
+        <div class="wrapper wrapper--w960">
+            <div class="card card-2">
+                <div class="card-heading"></div>
+                <div class="card-body">
+                                                
+                    <h2 class="title">Seeker Creation</h2>
+                    <h6 class="card-subtitle mb-2 text-muted">Please type seeker information.</h6>
+                    <form action="/seekers/create" method="post" role="form" th:object="${item}">
+                    
+                    <div class="row row-space">
+                    
+                          <div class="col-2">
+		                    <div class="input-group">
+		                         <input type="text" class="input--style-2" th:field="*{firstName}" placeholder="First Name">
+		                    </div>
+		                    <div th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}" class="custom-inline-validatation-error" > 
+		                    	Error on First Name
+		                    </div>
+		                 
+                          </div>
+                          
+                          <div class="col-2">
+	                    	<div class="input-group">
+		                            <input type="text" th:field="*{lastName}" class="input--style-2" placeholder="Last Name" >
+		                    </div>
+		                    <div th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}" class="custom-inline-validatation-error" > 
+		                    	Error on Last Name
+		                    </div>
+                          </div>
+                          
+                     </div>
+                      
+                     <div class="row row-space">
+                  
+                        <div class="col-2">
+		                    <div class="input-group">
+		                          
+		                          	<select th:field="*{bloodGroup}" class="input--style-2" required style="width: 207px;">
+										<option value="">Select Blood Group</option>
+										<option value="A">A</option>
+										<option value="O+">O+</option>
+										<option value="O-">O-</option>
+										<option value="ORh+">ORh+</option>
+										<option value="B">B</option>
+										<option value="B+">B+</option>
+									</select>
 								
-											<div class="card" style="display: block;">
-											<form action="/seekers/create" method="post" role="form">
-                                                   <div class="card-body">
-                                                       <h5 class="card-title">Seeker Creation</h5>
-                                                       <h6 class="card-subtitle mb-2 text-muted">Please type seeker information.</h6>
-                                                       <div class="card-text">
-
-                                                           <div class="form-group">
-
-                                                               <label for="firstName">First Name</label>
-                                                               <input type="text" name="firstName" class="form-control" id="firstName" >
-
-                                                           </div>
-
-                                                           <div class="form-group">
-
-                                                               <label for="lastName">Last Name</label>
-                                                               <input type="text" name="lastName" class="form-control" id="lastName" >
-
-                                                           </div>
-                                                           
-                                                           <div class="form-group">
-
-                                                               <label for="bloodGroup">Age Or DOB</label>
-                                                               <input type="text" name="bloodGroup" class="form-control" id="bloodGroup" >
-
-                                                           </div>
-                                                           
-                                                           <div class="form-group">
-
-                                                               <label for="gender">Gender</label>
-                                                               <input type="text" name="gender" class="form-control" id="gender" >
-
-                                                           </div>
-                                                           
-                                                           <div class="form-group">
-
-                                                               <label for="city">City</label>
-                                                               <input type="text" name="city" class="form-control" id="city" >
-
-                                                           </div>
-                                                           
-                                                           <div class="form-group">
-
-                                                               <label for="phone">Phone</label>
-                                                               <input type="text" name="phone" class="form-control" id="phone" >
-
-                                                           </div>
-                                                           
-                                                             <button type="submit" class="btn btn-primary" style="float:right;">Create</button>
-                                                           
-                                                           <div class="clearfix"></div>
-
-                                                       </div>
-                                                   </div>
-                                            </form>
-                                            </div>
-											
-									</div>
+		                    </div>
+		                    <div th:if="${#fields.hasErrors('bloodGroup')}" th:errors="*{bloodGroup}" class="custom-inline-validatation-error" > 
+		                    	Error on Blood Group
+		                    </div>
+		                 </div>
+		                        
+		                 <div class="col-2">
+		                   	<div class="input-group">
+		                        <input th:field="*{ageOrDOB}" type="text" class="input--style-2" placeholder="Age">
+		                    </div>
+		                    <div th:if="${#fields.hasErrors('ageOrDOB')}" th:errors="*{ageOrDOB}" class="custom-inline-validatation-error" > 
+		                    	Error on age Or DOB
+		                    </div>
+                        </div>
+                        
+                  	</div>
+                  	
+                  	<div class="row row-space">
+                  
+                        <div class="col-2">
+		                 
+		                    <div class="input-group">
+						
+		                          	<select th:field="*{gender}" class="input--style-2" required style="width: 207px;">
+										<option value="">Select Gender</option>
+										<option value="Male">Male</option>
+										<option value="Female">Female</option>
+									</select>
 									
-								</div>
 							</div>
-						</div>
-					</div>
-					
-					<p class="footer-company-name">Eduardo COMP303 Assignment3 - Java EE - Create Page</p>
-					
-				</div>
-			</div>
-		</div>	
-	</div>
-	
-</div>
+							<div th:if="${#fields.hasErrors('gender')}" th:errors="*{gender}" class="custom-inline-validatation-error" > 
+		                    	Error on Gender
+		                    </div>
+				
+		                 </div>
+		                        
+		                 <div class="col-2">
+		                   	<div class="input-group">
+		                        <input th:field="*{phone}" type="text" class="input--style-2" placeholder="Phone">
+		                    </div>
+		                    <div th:if="${#fields.hasErrors('phone')}" th:errors="*{phone}" class="custom-inline-validatation-error" > 
+		                    	Error on Phone
+		                    </div>
+                        </div>
+                        
+                  	</div>
+                  
+                  	<div class="row row-space">
+                  
+                        <div class="col-2">
+	                        <div class="input-group">
+				            	<input th:field="*{city}" type="text" class="input--style-2" placeholder="City">
+							</div>
+							<div th:if="${#fields.hasErrors('city')}" th:errors="*{city}" class="custom-inline-validatation-error" > 
+		                    	Error on City
+		                    </div>
+		                 </div>
+		                        
+		                 <div class="col-2">
+		                   	<div class="input-group">
+		                     
+		                    </div>
+                        </div>
+                        
+                  	</div>
+                  	
+		             <div class="p-t-30">
+			             <button type="submit" style="float:right;" class="btn btn-danger">Create</button>
+			             <button type="button" style="float:left;" class="btn btn-info" onclick="history.go(-1);">Cancel</button>
+		             </div>
+		                                   
+                  </form>
+                </div>
+            </div>
+        </div>
+        
+        <p class=" p-t-30 footer-company-name">Eduardo COMP303 Assignment4 - Java EE - Create Seeker</p>
+		
+    </div>
 
-<script src="/js/jquery.min.js"></script>
-<script src="/js/bootstrap.min.js"></script>
-<script src="/js/particles.min.js"></script>
-<script src="/js/index.min.js"></script>
+    <!-- Jquery JS-->
+    <script src="/vendor/jquery/jquery.min.js"></script>
+    <!-- Vendor JS-->
+    <script src="/vendor/select2/select2.min.js"></script>
+    <script src="/vendor/datepicker/moment.min.js"></script>
+    <script src="/vendor/datepicker/daterangepicker.js"></script>
+
+    <!-- Main JS-->
+    <script src="/js/global.js"></script>
 
 </body>
+
 </html>
+<!-- end document-->

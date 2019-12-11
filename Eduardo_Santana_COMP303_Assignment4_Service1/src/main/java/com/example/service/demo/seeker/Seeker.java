@@ -19,7 +19,6 @@ import com.sun.istack.NotNull;
  * Submission Date: 2019-11-15 (Estimated)
  * File Created: Nov. 6, 2019
  */
-
 @Entity
 @Table(name="seekers")
 public class Seeker {

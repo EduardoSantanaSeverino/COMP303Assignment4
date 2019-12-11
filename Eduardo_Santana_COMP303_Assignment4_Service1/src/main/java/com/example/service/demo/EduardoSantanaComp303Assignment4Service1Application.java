@@ -24,4 +24,5 @@ public class EduardoSantanaComp303Assignment4Service1Application implements WebM
 		registry.addViewController("/actuator/info").setViewName("index");
 	}
 	
+	
 }
