@@ -1,5 +1,8 @@
 version: '3'
 
+volumes:
+  datafiles:
+    
 services:
 
   mysqllocal:
@@ -37,7 +40,31 @@ services:
     depends_on:
      - assignment4cloud
 
+  assignment4cloud:
+    image: eduardoamparo/assignment4-cloud
+    restart: always
+    ports:
+     - 8761:8761
+    depends_on:
+     - mysqllocal
 
+  assignment4service2:
+    image: eduardoamparo/assignment4-service2
+    restart: always
+    ports:
+     - 8020:8020
+    depends_on:
+     - assignment4cloud
+
+  assignment4web2:
+    image: eduardoamparo/assignment4-web2
+    restart: always
+    ports:
+     - 8021:8021
+    depends_on:
+     - assignment4cloud
+
+     
 
 
 
