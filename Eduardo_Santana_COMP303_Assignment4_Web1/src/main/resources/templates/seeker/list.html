@@ -43,74 +43,74 @@
             <div class="card card-2">
                 <div class="card-body-small">
 	            	
-									<div class="main-content">
-									
-										<div th:if="${not #strings.isEmpty(error_message)}">
-									    	<div class="alert alert-danger" role="alert" th:text="${error_message}">
-											</div>
-										</div>
-										
-										<div th:if="${not #strings.isEmpty(info_message)}">
-											<div class="alert alert-success" role="alert" th:text="${info_message}">
-											</div>
-										</div>
-											
-											<div style="float: right; margin-bottom: 15px;">
-												<a href="/seekers/create" class="btn btn-danger add">
-													<i class="glyphicon glyphicon-user"></i> Register Seeker
-												</a>	
-											</div>
-
-											<div style="float: left; margin-top: 7px;">
-											    <h2><a href="/" style="font-weight: bold;">SEEKER LIST</a></h2>	
-											</div>
-											
-											<table class="table table-bordered table-hover table-striped">
-												<thead>
-												  <tr>
-												  
-													<th scope="col">#</th>
-													<th scope="col">First Name</th>
-													<th scope="col">Last Name</th>
-													<th scope="col">Gender</th>
-													<th scope="col">Phone</th>
-													<th scope="col" style="width: 15px;"></th>
-													<th scope="col" style="width: 15px;"></th>
-													<th scope="col" style="width: 15px;"></th>
-													
-												  </tr>
-												</thead>
-												<tbody>
-												
-												<tr th:each="item : ${items}">
-									                <td th:text="${item.id}"></td>
-									                <td th:text="${item.firstName}"></td>
-									                <td th:text="${item.lastName}"></td>
-									                <td th:text="${item.gender}"></td>
-									                <td th:text="${item.phone}"></td>
-									                <td><a th:href="@{/seekers/details/{id}(id=${item.id})}" class="btn btn-primary">Details</a></td>
-									                <td><a th:href="@{/seekers/update/{id}(id=${item.id})}" class="btn btn-warning">Edit</a></td>
-									                <td>
-									                
-									                <form th:action="@{/seekers/delete/{id}(id=${item.id})}" method="post" role="form">
-											   			<input type="submit" class="btn btn-danger" value="Delete"/>
-											   		</form>
-											   		
-									                </td>
-									            </tr>
-									            
-												</tbody>
-											  </table>
-											
-									</div>
-									
+					<div class="main-content">
+					
+						<div th:if="${not #strings.isEmpty(error_message)}">
+					    	<div class="alert alert-danger" role="alert" th:text="${error_message}">
+							</div>
 						</div>
+						
+						<div th:if="${not #strings.isEmpty(info_message)}">
+							<div class="alert alert-success" role="alert" th:text="${info_message}">
+							</div>
+						</div>
+							
+						<div style="float: right; margin-bottom: 15px;">
+							<a href="/seekers/create" class="btn btn-danger add">
+								<i class="glyphicon glyphicon-user"></i> Register Seeker
+							</a>	
+						</div>
+
+						<div style="float: left; margin-top: 7px;">
+						    <h2><a href="/" style="font-weight: bold;">SEEKER LIST</a></h2>	
+						</div>
+							
+						<table class="table table-bordered table-hover table-striped">
+								<thead>
+								  <tr>
+								  
+									<th scope="col">#</th>
+									<th scope="col">First Name</th>
+									<th scope="col">Last Name</th>
+									<th scope="col">Gender</th>
+									<th scope="col">Phone</th>
+									<th scope="col" style="width: 15px;"></th>
+									<th scope="col" style="width: 15px;"></th>
+									<th scope="col" style="width: 15px;"></th>
+									
+								  </tr>
+								</thead>
+								<tbody>
 								
-                </div>
-                
-            </div>
-            
-            <p class=" p-t-30 footer-company-name">Eduardo COMP303 Assignment4 - Java EE - List Services</p>
+								<tr th:each="item : ${items}">
+					                <td th:text="${item.id}"></td>
+					                <td th:text="${item.firstName}"></td>
+					                <td th:text="${item.lastName}"></td>
+					                <td th:text="${item.gender}"></td>
+					                <td th:text="${item.phone}"></td>
+					                <td><a th:href="@{/seekers/details/{id}(id=${item.id})}" class="btn btn-primary">Details</a></td>
+					                <td><a th:href="@{/seekers/update/{id}(id=${item.id})}" class="btn btn-warning">Edit</a></td>
+					                <td>
+					                
+					                <form th:action="@{/seekers/delete/{id}(id=${item.id})}" method="post" role="form">
+							   			<input type="submit" class="btn btn-danger" value="Delete"/>
+							   		</form>
+							   		
+					                </td>
+					            </tr>
+					            
+								</tbody>
+						 </table>
+										
+					</div>
+						
+				</div>
+					
+             </div>
+             
+         </div>
+         
+         <p class=" p-t-30 footer-company-name">Eduardo COMP303 Assignment4 - Java EE - List Services</p>
             
     </div>
   

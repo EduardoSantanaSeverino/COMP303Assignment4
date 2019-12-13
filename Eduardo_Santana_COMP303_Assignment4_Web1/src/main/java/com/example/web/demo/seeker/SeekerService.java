@@ -12,7 +12,7 @@ import org.springframework.stereotype.Service;
  * @author eduardosantana
  *
  */
-@Service
+@Service("seekerService")
 public class SeekerService {
 
 	@Autowired
