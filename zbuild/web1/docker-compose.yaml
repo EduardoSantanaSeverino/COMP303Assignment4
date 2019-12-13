@@ -1,0 +1,22 @@
+version: '3'
+
+services:
+
+  mysqllocal:
+    image: mysql:8.0.0
+    restart: always
+    environment:
+      MYSQL_DATABASE: dbAssignment4
+      MYSQL_ROOT_PASSWORD: secret
+      MYSQL_ROOT_HOST: '%'
+      TZ: America/Toronto
+    ports:
+      - "3306:3306"
+
+  assignment4web1:
+    image: eduardoamparo/assignment4-web1
+    restart: always
+    ports:
+     - 8011:8011
+    depends_on:
+     - mysqllocal

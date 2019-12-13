@@ -40,14 +40,6 @@ services:
     depends_on:
      - assignment4cloud
 
-  assignment4cloud:
-    image: eduardoamparo/assignment4-cloud
-    restart: always
-    ports:
-     - 8761:8761
-    depends_on:
-     - mysqllocal
-
   assignment4service2:
     image: eduardoamparo/assignment4-service2
     restart: always
