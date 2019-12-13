@@ -10,7 +10,7 @@ public class EduardoSantanaComp303Assignment4CloudApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(EduardoSantanaComp303Assignment4CloudApplication.class, args);
-		System.out.println("Spring Boot JPA server started");
+		System.out.println("Spring Boot SERVER STARTED");
 	}
 	
 }

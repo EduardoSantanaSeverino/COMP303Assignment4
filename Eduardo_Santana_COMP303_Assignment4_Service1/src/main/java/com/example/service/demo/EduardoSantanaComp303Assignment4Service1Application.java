@@ -10,7 +10,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 @EnableDiscoveryClient
 public class EduardoSantanaComp303Assignment4Service1Application implements WebMvcConfigurer {
 
-	private static final String serviceName = "seeker-service"; 
+	private static final String serviceName = "seeker-service1"; 
 	
 	public static void main(String[] args) {
 		SpringApplication.run(EduardoSantanaComp303Assignment4Service1Application.class, args);

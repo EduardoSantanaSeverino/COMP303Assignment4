@@ -10,8 +10,12 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 @EnableDiscoveryClient
 public class EduardoSantanaComp303Assignment4Web1Application  implements WebMvcConfigurer  {
 
+	private static final String serviceName = "seeker-web1"; 
+	
 	public static void main(String[] args) {
 		SpringApplication.run(EduardoSantanaComp303Assignment4Web1Application.class, args);
+		System.setProperty("spring.config.name", serviceName);
+		System.out.println(serviceName + " Micro-service is ready....");
 	}
 
 	@Override

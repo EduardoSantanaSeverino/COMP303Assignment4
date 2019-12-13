@@ -1,0 +1,50 @@
+version: '3'
+services:
+
+  mysqllocal:
+    container_name: mysqllocal
+    image: mysql:8.0.0
+    volumes:
+      - ./Host-Dbs:/var/lib/mysql
+    restart: always
+    environment:
+      MYSQL_DATABASE: dbAssignment4
+      MYSQL_ROOT_PASSWORD: secret
+      MYSQL_ROOT_HOST: '%'
+      TZ: America/Toronto
+    ports:
+      - "3306:3306"
+    depends_on:
+      - assignment4cloud
+
+  assignment4cloud:
+    container_name: assignment4cloud
+    image: eduardoamparo/assignment4-cloud
+    restart: always
+    ports:
+     - 8761:8761
+    depends_on:
+     - mysqllocal
+
+  assignment4service1:
+    container_name: assignment4service1
+    image: eduardoamparo/assignment4-service1
+    restart: always
+    ports:
+     - 8020:8020
+     depends_on:
+     - assignment4cloud
+
+  assignment4web1:
+    container_name: assignment4web1
+    image: eduardoamparo/assignment4-web1
+    restart: always
+    ports:
+     - 8021:8021
+    depends_on:
+     - assignment4cloud
+
+
+
+
+

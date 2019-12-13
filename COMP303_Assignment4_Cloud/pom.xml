@@ -9,10 +9,10 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.example.server</groupId>
-	<artifactId>Eduardo_Santana_COMP303_Assignment4_Cloud</artifactId>
+	<artifactId>COMP303_Assignment4_Cloud</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>Eduardo_Santana_COMP303_Assignment4_Cloud</name>
-	<description>Eduardo_Santana_COMP303_Assignment4_Cloud</description>
+	<name>COMP303_Assignment4_Cloud</name>
+	<description>COMP303_Assignment4_Cloud</description>
 
 	<properties>
 		<java.version>1.8</java.version>
@@ -55,6 +55,13 @@
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
+			</plugin>
+			<plugin>
+			    <groupId>org.apache.maven.plugins</groupId>
+			    <artifactId>maven-surefire-plugin</artifactId>
+			    <configuration>
+			        <testFailureIgnore>true</testFailureIgnore>
+			    </configuration>
 			</plugin>
 		</plugins>
 	</build>
