@@ -1,0 +1,11 @@
+version: '3'
+
+services:
+
+  assignment4cloud:
+    image: eduardoamparo/assignment4-cloud
+    restart: always
+    ports:
+     - 8761:8761
+    depends_on:
+     - mysqllocal
